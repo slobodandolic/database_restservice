@@ -9,12 +9,10 @@ import com.rest.maven.model.Korisnici;
 
 public class DatabaseKorisnici {
 	
-	
 public Korisnici getKorisnikInfo (Integer id) {
 		
 		Korisnici korisnik = new Korisnici();
-		DatabaseSource db = new DatabaseSource();
-		
+		DatabaseConnection db = new DatabaseConnection();
 		Connection connection = db.getConnection();
 		
 		String sql = "select * from dbkodovi.korisnici where id = " + id;
@@ -28,7 +26,6 @@ public Korisnici getKorisnikInfo (Integer id) {
 				korisnik.setPrezime(rs.getString(3));
 				korisnik.setEmail(rs.getString(4));
 				korisnik.setUsername(rs.getString(5));
-				
 			}
 			
 		} catch (SQLException e) {
@@ -36,7 +33,5 @@ public Korisnici getKorisnikInfo (Integer id) {
 		}
 		
 		return korisnik;
-		
 	}
-
 }

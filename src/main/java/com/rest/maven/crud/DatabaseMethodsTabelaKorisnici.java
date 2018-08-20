@@ -9,9 +9,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.rest.maven.datasource.DatabaseKorisnici;
 import com.rest.maven.datasource.DatabaseTabelaKorisnici;
-import com.rest.maven.model.Korisnici;
 import com.rest.maven.model.TabelaKorisnici;
 
 @Path("/tabelakorisnici")
@@ -42,10 +40,10 @@ public class DatabaseMethodsTabelaKorisnici {
 	@Path("{id}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public TabelaKorisnici findKorisnik(@PathParam("id") Integer id) {
-		
+
 		TabelaKorisnici tb = new TabelaKorisnici();
 		DatabaseTabelaKorisnici db = new DatabaseTabelaKorisnici();
-		
+
 		tb = db.getKorisnikNagradaId(id);
 		return tb;
 	}

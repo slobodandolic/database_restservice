@@ -74,7 +74,6 @@ public class TabelaKorisnici implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof TabelaKorisnici)) {
             return false;
         }
@@ -87,7 +86,7 @@ public class TabelaKorisnici implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.mavenproject3.Tabelakorisnici[ idnagrade=" + idnagrade + " ]";
+        return "com.rest.maven.model.Tabelakorisnici[ idnagrade=" + idnagrade + " ]";
     }
     
 }

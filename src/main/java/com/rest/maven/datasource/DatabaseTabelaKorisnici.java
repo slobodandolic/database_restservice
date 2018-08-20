@@ -12,7 +12,7 @@ public class DatabaseTabelaKorisnici {
 	public TabelaKorisnici getKorisnikNagradaId(Integer id) {
 
 		TabelaKorisnici tb = new TabelaKorisnici();
-		DatabaseSource db = new DatabaseSource();
+		DatabaseConnection db = new DatabaseConnection();
 
 		Connection connection = db.getConnection();
 

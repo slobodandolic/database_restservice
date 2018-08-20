@@ -12,7 +12,7 @@ public class DatabaseTabela {
 	public Tabela getTabelaInfo() {
 		
 		Tabela tabela = new Tabela();
-		DatabaseSource db = new DatabaseSource();
+		DatabaseConnection db = new DatabaseConnection();
 		
 		Connection connection = db.getConnection();
 		
@@ -40,7 +40,7 @@ public class DatabaseTabela {
 	public Tabela getTabelainfo (Integer id) {
 		
 		Tabela tabela = new Tabela();
-		DatabaseSource db = new DatabaseSource();
+		DatabaseConnection db = new DatabaseConnection();
 		
 		Connection connection = db.getConnection();
 		

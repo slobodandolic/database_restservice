@@ -3,7 +3,7 @@ package com.rest.maven.datasource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class DatabaseSource {
+public class DatabaseConnection {
 
 	public Connection getConnection() {
 
