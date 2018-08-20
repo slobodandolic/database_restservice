@@ -47,6 +47,15 @@ public class DatabaseMethodsTabela {
 		return tabela;
 	}
 	
+	@GET
+	@Path("/randomkod")
+	@Produces({MediaType.TEXT_HTML})
+	public String generateKod () {
+		
+		DatabaseTabela db = new DatabaseTabela();
+		return db.getRandomKod(); 
+	}
+	
 	
 	
 }
