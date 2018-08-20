@@ -9,11 +9,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.rest.maven.datasource.DatabaseTabela;
-import com.rest.maven.model.Tabela;
+import com.rest.maven.datasource.DatabaseKorisnici;
+import com.rest.maven.model.Korisnici;
 
-@Path("/tabela")
-public class DatabaseMethods {
+@Path("/korisnici")
+public class DatabaseMethodsKorisnici {
 
 	@GET
 	@Produces({ MediaType.TEXT_HTML })
@@ -39,12 +39,11 @@ public class DatabaseMethods {
 	@GET
 	@Path("{id}")
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Tabela find(@PathParam("id") Integer id) {
-
-		Tabela tabela = new Tabela();
-		DatabaseTabela db = new DatabaseTabela();
-		tabela = db.getTabelainfo(id);
-		return tabela;
+	public Korisnici findKorisnik(@PathParam("id") Integer id) {
+		Korisnici korisnik = new Korisnici();
+		DatabaseKorisnici db = new DatabaseKorisnici();
+		korisnik = db.getKorisnikInfo(id);
+		return korisnik;
 	}
 
 }

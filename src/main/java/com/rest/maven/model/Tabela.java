@@ -83,24 +83,6 @@ public class Tabela implements Serializable {
         this.proveren = proveren;
     }
 
-    /*@XmlTransient
-    public Collection<Korisnici> getKorisniciCollection() {
-        return korisniciCollection;
-    }
-
-    public void setKorisniciCollection(Collection<Korisnici> korisniciCollection) {
-        this.korisniciCollection = korisniciCollection;
-    }
-
-    @XmlTransient
-    public Collection<TabelaKorisnici> getTabelaKorisniciCollection() {
-        return tabelaKorisniciCollection;
-    }
-
-    public void setTabelaKorisniciCollection(Collection<TabelaKorisnici> tabelaKorisniciCollection) {
-        this.tabelaKorisniciCollection = tabelaKorisniciCollection;
-    }*/
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -110,7 +92,6 @@ public class Tabela implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Tabela)) {
             return false;
         }
