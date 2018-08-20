@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [15/Aug/2018:11:17:48 +0200] "GET /RESTfulCRUD/rest/employees HTTP/1.1" 200 350 http-bio-8080-exec-1 219
+0:0:0:0:0:0:0:1 - - [15/Aug/2018:11:17:48 +0200] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-3 0
+0:0:0:0:0:0:0:1 - - [15/Aug/2018:13:03:06 +0200] "GET /RESTfulCRUD/rest/employees HTTP/1.1" 200 350 http-bio-8080-exec-5 130
+0:0:0:0:0:0:0:1 - - [15/Aug/2018:13:03:16 +0200] "GET /RESTfulCRUD/rest/employees HTTP/1.1" 200 350 http-bio-8080-exec-7 5
+0:0:0:0:0:0:0:1 - - [15/Aug/2018:13:03:19 +0200] "GET /RESTfulCRUD/rest/employees/E01 HTTP/1.1" 200 144 http-bio-8080-exec-9 5
+0:0:0:0:0:0:0:1 - - [15/Aug/2018:13:06:11 +0200] "GET /RESTfulCRUD/rest/employees/E02 HTTP/1.1" 200 147 http-bio-8080-exec-1 7
