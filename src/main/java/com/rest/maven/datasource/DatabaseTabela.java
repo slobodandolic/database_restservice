@@ -78,4 +78,31 @@ public class DatabaseTabela {
 		return stringBuilder.toString();
 
 	}
+
+	public int getLast() {
+
+		int kod = 0;
+		DatabaseConnection db = new DatabaseConnection();
+		Connection connection = db.getConnection();
+		try {
+
+			String sql = "select * from dbkodovi.tabela where id = (select max(id) from dbkodovi.tabela)";
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ResultSet result = ps.executeQuery(sql);
+
+			if (result.next()) {
+				kod = result.getInt(1);
+
+				System.out.println("Poslednji popunjen red u tabeli je: " + kod);
+				return kod;
+
+			} else {
+				System.out.println("Greska selectLastDatabaseTabela sql");
+			}
+		} catch (Exception e) {
+			System.out.println("Nepostojeci kod");
+		}
+
+		return kod;
+	}
 }
