@@ -15,27 +15,29 @@ public class DatabaseTabela {
 		Tabela tabela = new Tabela();
 		DatabaseConnection db = new DatabaseConnection();
 
-		Connection connection = db.getConnection();
-
 		String sql = "select * from dbkodovi.tabela where id = 6";
-		try {
-			PreparedStatement ps = connection.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
+		try (Connection connection = db.getConnection()) {
 
-				tabela.setId(rs.getInt(1));
-				tabela.setKod(rs.getString(2));
-				tabela.setNagrada(rs.getString(3));
-				tabela.setProveren(rs.getInt(4));
+			try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
+				ResultSet rs = ps.executeQuery();
+				while (rs.next()) {
+
+					tabela.setId(rs.getInt(1));
+					tabela.setKod(rs.getString(2));
+					tabela.setNagrada(rs.getString(3));
+					tabela.setProveren(rs.getInt(4));
+
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
+		} catch (Exception ee) {
 
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 
 		return tabela;
-
 	}
 
 	public Tabela getTabelainfo(Integer id) {
@@ -43,27 +45,31 @@ public class DatabaseTabela {
 		Tabela tabela = new Tabela();
 		DatabaseConnection db = new DatabaseConnection();
 
-		Connection connection = db.getConnection();
-
 		String sql = "select * from dbkodovi.tabela where id = " + id + "";
-		try {
-			PreparedStatement ps = connection.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
 
-				tabela.setId(rs.getInt(1));
-				tabela.setKod(rs.getString(2));
-				tabela.setNagrada(rs.getString(3));
-				tabela.setProveren(rs.getInt(4));
+		try (Connection connection = db.getConnection()) {
 
+			try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+				ResultSet rs = ps.executeQuery();
+
+				while (rs.next()) {
+
+					tabela.setId(rs.getInt(1));
+					tabela.setKod(rs.getString(2));
+					tabela.setNagrada(rs.getString(3));
+					tabela.setProveren(rs.getInt(4));
+
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
+		} catch (Exception ee) {
 
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 
 		return tabela;
-
 	}
 
 	public String getRandomKod() {
@@ -83,24 +89,28 @@ public class DatabaseTabela {
 
 		int kod = 0;
 		DatabaseConnection db = new DatabaseConnection();
-		Connection connection = db.getConnection();
-		try {
+		String sql = "select * from dbkodovi.tabela where id = (select max(id) from dbkodovi.tabela)";
 
-			String sql = "select * from dbkodovi.tabela where id = (select max(id) from dbkodovi.tabela)";
-			PreparedStatement ps = connection.prepareStatement(sql);
-			ResultSet result = ps.executeQuery(sql);
+		try (Connection connection = db.getConnection()) {
 
-			if (result.next()) {
-				kod = result.getInt(1);
+			try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
-				System.out.println("Poslednji popunjen red u tabeli je: " + kod);
-				return kod;
+				ResultSet result = ps.executeQuery(sql);
 
-			} else {
-				System.out.println("Greska selectLastDatabaseTabela sql");
+				if (result.next()) {
+					kod = result.getInt(1);
+
+					System.out.println("Poslednji popunjen red u tabeli je: " + kod);
+					return kod;
+
+				} else {
+					System.out.println("Greska selectLastDatabaseTabela sql");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			System.out.println("Nepostojeci kod");
+		} catch (Exception ee) {
+
 		}
 
 		return kod;

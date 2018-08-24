@@ -19,25 +19,23 @@ import com.rest.maven.model.Tabela;
 
 @Path("/tabela")
 public class DatabaseMethodsTabela {
-
+	
 	@GET
 	@Produces({ MediaType.TEXT_HTML })
 	public String returnString() {
 
 		Connection connect = null;
-
+		
 		String dbase = "jdbc:mysql://localhost:3306/dbkodovi?useSSL=false";
 		String dbpass = "root";
 		String dbuser = "root";
-
 		try {
-
 			Class.forName("com.mysql.jdbc.Driver");
 			connect = DriverManager.getConnection(dbase, dbuser, dbpass);
 			return "Connection succesfull";
 
 		} catch (Exception e) {
-			return "Connection fail";
+			return "Connection fail1";
 		}
 	}
 
@@ -50,6 +48,7 @@ public class DatabaseMethodsTabela {
 		DatabaseTabela db = new DatabaseTabela();
 		tabela = db.getTabelainfo(id);
 		return tabela;
+		
 	}
 	
 	@GET
@@ -116,6 +115,32 @@ public class DatabaseMethodsTabela {
 		ArrayList<Tabela> lista = new ArrayList<>();
 
 		for (int i = firstEmptyId; i < range; i++) {
+		lista.add(db.getTabelainfo(i));
+		
+	}
+		
+		String json = new Gson().toJson(lista);
+		
+		return json;
+
+	
+}
+	
+	@GET
+	@Path("/sve")
+	@Produces({MediaType.APPLICATION_JSON})
+	public String sviKodovi() {
+	
+	
+		Connection connection = new DatabaseConnection().getConnection();
+
+		DatabaseTabela db = new DatabaseTabela();
+		
+		int kod = db.getLast();
+			
+		ArrayList<Tabela> lista = new ArrayList<>();
+
+		for (int i = 0; i <= kod; i++) {
 		lista.add(db.getTabelainfo(i));
 		
 	}
